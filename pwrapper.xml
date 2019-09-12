@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Prerequisites>  
+  <Product>
+    <InstallationPath>inst.bat</InstallationPath>
+    <DisplayName>Micro Focus Unified Functional Testing 14.53</DisplayName>
+    <PrerequisiteRelativePath>prerequisites\</PrerequisiteRelativePath>
+    <CommonFolderRelativePath>..\..\prerequisites\</CommonFolderRelativePath>
+    <SystemRestorePointRequired>false</SystemRestorePointRequired>
+    <RestartBeforeInstall>false</RestartBeforeInstall>
+    <SkipRestartMachineBeforeInstall>true</SkipRestartMachineBeforeInstall>
+  </Product>
+
+  <SupportedOperatingSystems>
+    <OperatingSystem>
+      <Name>Enable installation on Windows 7, Windows Server 2008 R2 and later</Name>
+      <MajorVersion>6</MajorVersion>
+      <MinorVersion>1</MinorVersion>
+      <Condition>GEQ</Condition>
+    </OperatingSystem>
+  </SupportedOperatingSystems>
+  
+  <Prerequisite>
+    <Name ID="010">.Net Framework 4.5</Name>
+    <Description ID="011">The Microsoft development and execution environment that allows different programming languages and libraries to work together  to create Windows-based applications.</Description>
+    <Message ID="012">.Net Framework 4.5 is missing on this machine, Please install all missing prerequisites and run this installation again.</Message>  
+    <Installers>
+      <Installer>
+        <Path>dotnet45\dotnetfx45_full_x86_x64.exe</Path>		  
+        <LCID>1041</LCID>		  
+      </Installer>
+      <Installer>
+        <Path>dotnet45\dotnetfx45_full_x86_x64.exe</Path>		  
+        <LCID>1042</LCID>		  
+      </Installer>
+      <Installer>
+        <Path>dotnet45\dotnetfx45_full_x86_x64.exe</Path>		  
+        <LCID>2052</LCID>		  
+      </Installer>
+      <Installer>
+        <Path>dotnet45\dotnetfx45_full_x86_x64.exe</Path>
+      </Installer>
+    </Installers>    	  
+    <CommandArguments>
+      <Silent>/q /norestart /c:"install /q" /LCID</Silent>
+      <Normal>/norestart /passive /LCID</Normal>
+    </CommandArguments>
+    <SearchMechanism>REGISTRYCHECK</SearchMechanism>
+    <RegKeys>
+      <RegKey>
+        <Root>HKEY_LOCAL_MACHINE</Root>
+        <Key>Software\Microsoft\NET Framework Setup\NDP\v4\Full</Key>			
+        <ValueName>Release</ValueName>
+        <Type>REG_DWORD</Type>
+        <ExpectedValue>378389</ExpectedValue>
+        <Condition>GEQ</Condition>
+      </RegKey>
+    </RegKeys>
+  </Prerequisite>
+
+
+  <!--Prerequisite>
+    <Name ID="025">Microsoft WSE 2.0 SP3 Runtime</Name>
+    <Description ID="026">The Microsoft supported add-on to the Microsoft .NET Framework.  It provides a foundation for running applications based on Web services specifications published by Microsoft and industry partners.</Description>
+    <Message ID="027">Microsoft WSE 2.0 SP3 Runtime is missing on this machine, Please install all missing prerequisites and run this installation again.</Message>
+    <Installers>
+      <Installer>
+        <Path>wse20sp3\MicrosoftWSE2.0SP3Runtime.msi</Path>
+      </Installer>
+    </Installers>
+    <SearchMechanism>UPGRADECODECHECK</SearchMechanism>
+    <UpgradeCode>{1093C60E-AF41-4DCC-90C8-876BA0E2A88B}</UpgradeCode>
+    <CommandArguments>
+      <Silent>/quiet /norestart ALLUSERS=1</Silent>
+      <Normal>/qb ALLUSERS=1</Normal>
+    </CommandArguments>
+    <Version>
+      <Major>2</Major>
+      <Minor>0</Minor>
+      <Build>5050</Build>
+      <HotFix>0</HotFix>
+    </Version>
+  </Prerequisite>
+  <Prerequisite>
+    <Name ID="028">Microsoft WSE 3.0 Runtime</Name>
+    <Description ID="029">The Microsoft supported add-on to the Microsoft .NET Framework.  It provides a foundation for running applications based on Web services specifications published by Microsoft and industry partners.</Description>
+    <Message ID="030">Microsoft WSE 3.0 Runtime is missing on this machine, Please install all missing prerequisites and run this installation again.</Message>
+    <Installers>
+      <Installer>
+        <Path>wse30\MicrosoftWSE3.0Runtime.msi</Path>
+      </Installer>
+    </Installers>
+    <SearchMechanism>UPGRADECODECHECK</SearchMechanism>
+    <UpgradeCode>{DE6ECF6D-2979-4137-8B56-0339497275B6}</UpgradeCode>
+    <CommandArguments>
+      <Silent>/quiet /norestart ALLUSERS=1</Silent>
+      <Normal>/qb ALLUSERS=1</Normal>
+    </CommandArguments>
+    <Version>
+      <Major>3</Major>
+      <Minor>0</Minor>
+      <Build>5305</Build>
+      <HotFix>0</HotFix>
+    </Version>
+  </Prerequisite-->
+
+  
+  <Prerequisite>
+    <Name ID="064">Verify that all required Microsoft Windows updates are installed in the OS ...</Name>
+    <Description ID="065">Press OK to launch a tool verifying that the Operating System is updated with all required Microsoft Windows updates. For information on the required Microsoft Windows updates for Microsoft Visual C++ Redistributable 2015, see the installation guide.</Description>
+    <Message ID="066">Installing Microsoft Visual C++ Redistributable for Visual Studio 2015 requires security updates to be already installed in the OS.</Message>
+    <Installers>
+      <Installer>
+        <Path> vc2015_redist_x86\VC2015Prerequisite.exe</Path>
+        <LCID></LCID>
+      </Installer>
+    </Installers>
+    <SearchMechanism>REGISTRYCHECK</SearchMechanism>
+    <RegKeys>
+      <RegKey>
+        <Root>HKEY_CURRENT_USER</Root>
+        <Key>Software\HPE\IHP</Key>
+        <ValueName>VC2015Prerequisite</ValueName>
+        <Type>REG_SZ</Type>
+        <ExpectedValue>99</ExpectedValue>
+        <Condition>GEQ</Condition>
+      </RegKey>
+    </RegKeys>
+    <CommandArguments>
+      <Silent>silent</Silent>
+      <Normal>normal</Normal>
+    </CommandArguments>
+  </Prerequisite>
+  <Prerequisite>
+    <Name ID="058">Microsoft Visual C++ 2015 Redistributable</Name>
+    <Description ID="059">The Visual C++ Redistributable Packages install run-time components that are required to run C++ applications built using Visual Studio 2015.</Description>
+    <Message ID="060">The Unified Functional Testing installation requires that Microsoft Visual C++ 2015 Redistributable be installed on your computer. Install Microsoft Visual C++ 2015 Redistributable and then run this installation again.</Message>
+    <Installers>
+      <Installer>
+        <Path>vc2015_redist_x86\vcredist_x86.exe</Path>
+        <LCID></LCID>
+      </Installer>
+    </Installers>
+    <SearchMechanism>UPGRADECODECHECK</SearchMechanism>
+    <UpgradeCode>{65E5BD06-6392-3027-8C26-853107D3CF1A}</UpgradeCode>
+    <CommandArguments>
+      <Silent>/quiet /norestart</Silent>
+      <Normal>/passive /norestart</Normal>
+    </CommandArguments>
+    <Version>
+      <Major>14</Major>
+      <Minor>0</Minor>
+      <Build>23026</Build>
+    </Version>
+  </Prerequisite>
+  <Prerequisite>
+    <Name ID="061">Microsoft Visual C++ 2015 Redistributable x64</Name>
+    <Description ID="062">The Visual C++ Redistributable Packages install run-time components that are required to run C++ applications built using Visual Studio 2015.</Description>
+    <Message ID="063">The Unified Functional Testing installation requires that Microsoft Visual C++ 2015 Redistributable x64 be installed on your computer. Install Microsoft Visual C++ 2015 Redistributable x64 and then run this installation again.</Message>
+    <Installers>
+      <Installer>
+        <Path>vc2015_redist_x64\vcredist_x64.exe</Path>
+        <LCID></LCID>
+      </Installer>    
+    </Installers>
+    <SearchMechanism>UPGRADECODECHECK</SearchMechanism>
+    <UpgradeCode>{36F68A90-239C-34DF-B58C-64B30153CE35}</UpgradeCode>
+    <CommandArguments>
+      <Silent>/quiet /norestart</Silent>
+      <Normal>/passive /norestart</Normal>
+    </CommandArguments>
+    <OSArch>x64</OSArch>
+    <Version>
+      <Major>14</Major>
+      <Minor>0</Minor>
+      <Build>23026</Build>
+    </Version>
+  </Prerequisite>
+
+  <Prerequisite>
+    <Name ID="016">Microsoft Office Access database engine 2016</Name>
+    <Description ID="017">Microsoft Office Access database engine 2016</Description>
+    <Message ID="018">Microsoft Office Access database engine 2016 is missing on this machine, Please install all missing prerequisites and run this installation again.</Message>
+    <Installers>
+      <Installer>
+        <Path>msade2016\AccessDatabaseEngine.exe</Path>
+      </Installer>
+    </Installers>
+    <SearchMechanism>UPGRADECODECHECK</SearchMechanism>
+    <UpgradeCode>{00160000-00D1-0000-0000-0000000FF1CE}</UpgradeCode>
+    <CommandArguments>
+      <Silent>/quiet /norestart</Silent>
+      <Normal>/quiet /norestart</Normal>
+    </CommandArguments>
+    <Version>
+      <Major>16</Major>
+      <Minor>0</Minor>
+      <Build>4519</Build>
+      <HotFix>1000</HotFix>
+    </Version>
+  </Prerequisite>
+  
+  <Prerequisite>
+    <Name ID="064">Microsoft PDM Installer</Name>
+    <Description ID="065">The Microsoft PDM Installer installs run-time components that are required to debug Unified Functional Testing scripts.</Description>
+    <Message ID="066">The Unified Functional Testing installation requires that Microsoft PDM components be installed on your computer. Install Microsoft PDM Installer and then run this installation again.</Message>
+    <Installers>
+      <Installer>
+        <Path>pdm\ScriptDebugging_x86.msi</Path>
+        <LCID></LCID>
+      </Installer>    
+    </Installers>
+    <CommandArguments>
+      <Silent>/quiet /norestart</Silent>
+      <Normal>/passive /norestart</Normal>
+    </CommandArguments>
+    <SearchMechanism>UPGRADECODECHECK</SearchMechanism>
+    <UpgradeCode>{7FE0DD7B-18C6-4891-B2EE-694DC70B3C43}</UpgradeCode>
+	<SupportedOperatingSystems>
+	    <OperatingSystem>
+		  <Name>Enable installation on Windows 8, Windows Server 2012 and later</Name>
+		  <MajorVersion>6</MajorVersion>
+		  <MinorVersion>2</MinorVersion>
+		  <Condition>GEQ</Condition>
+		</OperatingSystem>
+	</SupportedOperatingSystems>
+	<OSArch>x86</OSArch>
+  </Prerequisite>
+
+  <Prerequisite>
+    <Name ID="067">Microsoft PDM Installer x64</Name>
+    <Description ID="068">The Microsoft PDM Installer x64 installs run-time components that are required to debug Unified Functional Testing scripts.</Description>
+    <Message ID="069">The Unified Functional Testing installation requires that Microsoft PDM components be installed on your computer. Install Microsoft PDM Installer x64 and then run this installation again.</Message>
+    <Installers>
+      <Installer>
+        <Path>pdm\ScriptDebugging_x64.msi</Path>
+        <LCID></LCID>
+      </Installer>    
+    </Installers>
+    <CommandArguments>
+      <Silent>/quiet /norestart</Silent>
+      <Normal>/passive /norestart</Normal>
+    </CommandArguments>
+    <SearchMechanism>UPGRADECODECHECK</SearchMechanism>
+    <UpgradeCode>{7FE0DD7B-18C6-4891-B2EE-694DC70B3C43}</UpgradeCode>
+	<SupportedOperatingSystems>
+	    <OperatingSystem>
+		  <Name>Enable installation on Windows 8, Windows Server 2012 and later</Name>
+		  <MajorVersion>6</MajorVersion>
+		  <MinorVersion>2</MinorVersion>
+		  <Condition>GEQ</Condition>
+		</OperatingSystem>
+	</SupportedOperatingSystems>
+	<OSArch>x64</OSArch>
+  </Prerequisite>
+
+</Prerequisites>
